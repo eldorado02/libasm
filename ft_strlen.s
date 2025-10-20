@@ -16,4 +16,6 @@ ft_strlen:
 	mov rax, rcx
 	ret 
 
+section .note.GNU-stack noalloc noexec nowrite
+
 
