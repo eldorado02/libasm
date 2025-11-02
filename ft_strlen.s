@@ -1,21 +1,18 @@
+section .note.GNU-stack
+
 section .text
-	global ft_strlen ;rend la fonction globale
+	global ft_strlen
 
-
-ft_strlen:
-	mov rcx, 0           ; rcx compteur de boucle
-
-.loop :
-	mov al, byte [rdi + rcx]
-	cmp byte al, 0 ; raha mitovy de ZF 1
-	jz .done 
-	inc rcx						; manova le valeur an le ZF (ZF le valeur azo t@ le comparaison)
-	jmp .loop
-
-.done :
+end:
 	mov rax, rcx
-	ret 
+	ret
 
-section .note.GNU-stack noalloc noexec nowrite
+loop:
+	cmp byte [rdi + rcx], 0 
+	jz end
+	add rcx, 1
+	jmp loop
 
-
+ft_strlen :
+	xor rcx, rcx
+	jmp loop
